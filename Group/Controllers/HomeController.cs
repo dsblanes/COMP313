@@ -26,5 +26,17 @@ namespace Group.Controllers
 
             return View();
         }
+
+        public ActionResult Result()
+        {
+            ViewBag.Message = "Results Page";
+
+            return View();
+        }
+
+        public ActionResult Sorry()
+        {
+            return View();
+        }
     }
 }
