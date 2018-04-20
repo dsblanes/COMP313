@@ -48,81 +48,21 @@
                 </form>
             </div>
 
-
-
-            <div class="tableWrapper">
-                <table class="table">
-                    <tr>
-                        <td><a href="#">Accountants and Auditors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Actors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Actuaries</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Adhesive Bonding Machine Operators and Tenders</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Administrative Law Judges, Adjudicators, and Hearing Officers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Administrative Services Managers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Adult Basic and Secondary Education and Literacy Teachers and Instructors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Advertising and Promotions Managers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Advertising Sales Agents</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aerospace Engineering and Operations Technicians</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aerospace Engineers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agents and Business Managers of Artists, Performers, and Athletes</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural and Food Science Technicians</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural Engineers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural Inspectors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural Workers, All Other</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Air Traffic Controllers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aircraft Cargo Handling Supervisors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aircraft Mechanics and Service Technicians</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aircraft Structure, Surfaces, Rigging, and Systems Assemblers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Airfield Operations Specialists</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> ...</a></td>
-                    </tr>
-                </table>
+            <div>
+                <div class="tableWrapper">
+                    <table class="table">
+                        <table id="t01">
+                            @foreach (var job in ViewBag.jobsInTable)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="#">@job</a></td>
+                                </tr>
+                            }
+                        </table>
+                    </table>
+                </div>
             </div>
-        </div>
-
-
         <!--
              <div class="button-wrapper">
                    <form action="index.html">

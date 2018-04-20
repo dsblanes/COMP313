@@ -31,6 +31,9 @@ namespace Group.Controllers
         {
             ViewBag.Message = "Results Page";
 
+            AutomationEntities_ j = new AutomationEntities_();
+            var jobs = j.sp_jobstable().ToList();
+            ViewBag.jobsInTable = jobs;
             return View();
         }
 
