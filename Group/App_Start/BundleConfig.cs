@@ -23,6 +23,7 @@ namespace Group
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/main.js",
+                      "~/Scripts/autocomplete.js",
                       "~/Scripts/map.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

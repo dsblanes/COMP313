@@ -2,9 +2,6 @@
     ViewBag.Title = "Result";
 }
 
-<div class="main-image">
-</div>
-
 <div class="container">
 
     <div class="main wrapper clearfix row">
@@ -50,8 +47,7 @@
 
             <div>
                 <div class="tableWrapper">
-                    <table class="table">
-                        <table id="t01">
+                    <table class="table" id="t01">
                             @foreach (var job in ViewBag.jobsInTable)
                             {
                                 <tr>
@@ -59,7 +55,6 @@
                                         <a href="#">@job</a></td>
                                 </tr>
                             }
-                        </table>
                     </table>
                 </div>
             </div>
@@ -73,3 +68,4 @@
 
     </div> <!-- #main -->
 </div> <!-- container -->
+</div>
