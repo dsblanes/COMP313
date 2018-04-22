@@ -1,0 +1,78 @@
+﻿@using Group.Models;
+@using System.Data.Entity;
+
+@model Group.Models.Occupation
+
+
+@{
+    ViewBag.Title = "Result";
+}
+
+<div class="container">
+
+    <div class="main wrapper clearfix row">
+        <div class="col-md-7 results-left">
+
+            <span class="result"> @Html.DisplayFor(model => model.occProbability)%</span>
+
+            <h2>The @Html.DisplayFor(model => model.occName) profession is @Html.DisplayFor(model => model.occProbability)% Likely to Be Automated!</h2>
+
+            <p>Studies have shown that the @Html.DisplayFor(model => model.occName) profession is @Html.DisplayFor(model => model.occProbability) % likely to be automated compared to an average of 53.55% across US industries.</p>
+            <div class="professionChart">
+                <div class="professionBar"><span class="professionPerc">x</span>%</div> <div class="avgBar">
+                    <span class="professionPerc">x</span>% avg.
+                </div>
+            </div>
+
+            <h2>Related Occupations</h2>
+            <ul>
+                @foreach(var jr in ViewBag.jobsRelatedTable)
+                {
+                    <li>@jr</li>
+                }
+            </ul>
+
+            <h2>Job Description</h2>
+            <p>@Html.DisplayFor(model => model.occName) Description: @Html.DisplayFor(model => model.occDescription)</p>
+        </div>
+
+
+        <div class="col-md-5 results-right">
+
+
+            <div class="try-again">
+                <h2> Try Again</h2>
+                <p>Enter your profession below to find out or use the table below.</p>
+
+
+                <input class="secondary-search" id="secondary-search" type="text" placeholder="Type job name here">
+                <form action="result.html">
+
+                    <input type="submit" value="GO" class="go-btn">
+                </form>
+            </div>
+
+            <div>
+                <div class="tableWrapper">
+                    <table class="table" id="t01">
+                            @foreach (var job in ViewBag.jobsInTable)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="#">@job</a></td>
+                                </tr>
+                            }
+                    </table>
+                </div>
+            </div>
+        <!--
+             <div class="button-wrapper">
+                   <form action="index.html">
+                     <input type="submit" value="SEARCH AGAIN" class="btn">
+                  </form>
+             </div>
+         </div> -->
+
+    </div> <!-- #main -->
+</div> <!-- container -->
+</div>

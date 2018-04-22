@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AutomationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="jobsWithDescription">
+          <Key>
+            <PropertyRef Name="Rank" />
+          </Key>
+          <Property Name="Rank" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Probability" Type="float" Nullable="false" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="relatedOccupations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Occupation" Type="nvarchar" MaxLength="255" />
+          <Property Name="RelatedOccupation" Type="nvarchar" MaxLength="255" />
+          <Property Name="RelatedCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Function Name="sp_jobstable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_OccDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="term" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_OccnName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="term" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_OccProbability" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="term" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Related" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="term" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="AutomationModelStoreContainer">
+          <EntitySet Name="jobsWithDescription" EntityType="Self.jobsWithDescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="relatedOccupations" EntityType="Self.relatedOccupations" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutomationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="jobsWithDescription">
+          <Key>
+            <PropertyRef Name="Rank" />
+          </Key>
+          <Property Name="Rank" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Probability" Type="Double" Nullable="false" />
+          <Property Name="Occupation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AutomationEntities_" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="jobsWithDescriptions" EntityType="Self.jobsWithDescription" />
+          <FunctionImport Name="sp_jobstable" ReturnType="Collection(String)" />
+          <FunctionImport Name="occDescription" ReturnType="Collection(String)">
+          <Parameter Name="term" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="occProbability" ReturnType="Collection(String)">
+          <Parameter Name="term" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="relatedOccupations" EntityType="AutomationModel.relatedOccupation" />
+          <FunctionImport Name="sp_Related" ReturnType="Collection(String)">
+            <Parameter Name="term" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="relatedOccupation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Occupation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RelatedOccupation1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RelatedCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutomationModelStoreContainer" CdmEntityContainer="AutomationEntities_">
+          <EntitySetMapping Name="jobsWithDescriptions">
+            <EntityTypeMapping TypeName="AutomationModel.jobsWithDescription">
+              <MappingFragment StoreEntitySet="jobsWithDescription">
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Probability" ColumnName="Probability" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_jobstable" FunctionName="AutomationModel.Store.sp_jobstable" />
+          <FunctionImportMapping FunctionImportName="occDescription" FunctionName="AutomationModel.Store.sp_OccDescription" />
+          <FunctionImportMapping FunctionImportName="occProbability" FunctionName="AutomationModel.Store.sp_OccProbability" />
+          <EntitySetMapping Name="relatedOccupations">
+            <EntityTypeMapping TypeName="AutomationModel.relatedOccupation">
+              <MappingFragment StoreEntitySet="relatedOccupations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RelatedCode" ColumnName="RelatedCode" />
+                <ScalarProperty Name="RelatedOccupation1" ColumnName="RelatedOccupation" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Related" FunctionName="AutomationModel.Store.sp_Related" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
