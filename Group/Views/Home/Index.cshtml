@@ -1,6 +1,18 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Group.Models;
+@using System.Data.Entity;
+
+@model Group.Models.FuzzyResult
+
+@{
+    ViewBag.Title = "Index";
 }
+
+@using (Html.BeginForm("AutoComplete", "Home"))
+{
+
+@Scripts.Render("~/Scripts/autocomplete.js")
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/2.5.0/fuse.min.js"></script>
+
 
 <div class="container">
     <div class="jumbotron">
@@ -15,17 +27,19 @@
             <input class="job-search" id="main-search" type="text" placeholder="Type job name here" name="JobQuery">
         </div>
 
-        <div class="main clearfix col-md-2">
-            <div class="button-wrapper">
-                <form method="post" action="Result">
-                    <input type="submit" value="SEARCH" class="btn">
-                </form>
-            </div>
+        <div id="results" class="flow-text col s12"></div>
+    </div>
+
+
+    <div class="main clearfix col-md-2">
+        <div class="button-wrapper">
+            <input type="submit" value="SEARCH" class="btn">
         </div>
     </div>
-    <p>
-        Predictions range from optimistic to devastating regarding the future of employment.
-        <br>
-        Use this app and find out where your profession will stand.
-    </p>
 </div>
+<p>
+    Predictions range from optimistic to devastating regarding the future of employment.
+    <br>
+    Use this app and find out where your profession will stand.
+</p>
+}
