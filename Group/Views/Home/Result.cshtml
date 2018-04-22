@@ -66,7 +66,8 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href="#">@job</a>
+                                        <!--<a href="#">@job</a>-->
+                                        <a href="@Url.Action("Result",null, new {OccupationQuery = @job, controller = "Home" })" class="elements">@job</a>
                                     </td>
                                 </tr>
                             }
