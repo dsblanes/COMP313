@@ -20,21 +20,24 @@
 
                 <span class="result"> @Html.DisplayFor(model => model.occProbability)%</span>
 
-                <h2>The @Html.DisplayFor(model => model.occName) profession is @Html.DisplayFor(model => model.occProbability)% Likely to Be Automated!</h2>
+                <h2>
+                    The @Html.DisplayFor(model => model.occName) profession is <span id="proPerc">@Html.DisplayFor(model => model.occProbability)</span>% Likely to Be Automated!
+                </h2>
 
                 <p>Studies have shown that the @Html.DisplayFor(model => model.occName) profession is @Html.DisplayFor(model => model.occProbability) % likely to be automated compared to an average of 53.55% across US industries.</p>
                 <div class="professionChart">
-                    <div class="professionBar"><span class="professionPerc">x</span>%</div> <div class="avgBar">
-                        <span class="professionPerc">x</span>% avg.
+                    <div class="professionBar"><span class="professionPerc"></span></div> <div class="avgBar">
+                        <span class="professionPerc"></span>.
                     </div>
                 </div>
+
 
                 <h2>Related Occupations</h2>
                 <ul>
                     @foreach (var jr in ViewBag.jobsRelatedTable)
-                    {
-                        <li>@jr</li>
-                    }
+        {
+            <li>@jr</li>
+}
                 </ul>
 
                 <h2>Job Description</h2>
@@ -50,7 +53,7 @@
                     <p>Enter your profession below to find out or use the table below.</p>
 
 
-                    <input class="job-search" id="main-search" type="text" placeholder="Type job name here" name="JobQuery">
+                    <input class="job-search" id="main-search" type="text" placeholder="Type job name here" name="JobQuery" autocomplete="off">
                     <div id="results" class="flow-text col s12"></div>
                     <form action="result.html">
 
@@ -66,7 +69,8 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href="#">@job</a>
+                                        <a href="@Url.Action("Result",null, new {OccupationQuery = @job, controller = "Home" })" class="elements">@job</a>
+
                                     </td>
                                 </tr>
                             }

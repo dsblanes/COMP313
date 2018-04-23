@@ -22,7 +22,7 @@ namespace Group.Controllers
         {
             return RedirectToAction("Result","Home",new { OccupationQuery = JobQuery });
         }
-       
+
         public ActionResult About()
         {
             ViewBag.Message = "About This Project";
