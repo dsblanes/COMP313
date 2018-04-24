@@ -419,14 +419,23 @@ hr {
 
 p {
     margin: 0 0 10px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .lead {
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.7em;
+}
+
+.lead-home {
+    padding-top: 25px;
+    margin-bottom: 20px;
+    font-size: 18px;
     font-weight: normal;
     line-height: 1.4;
+    text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -881,8 +890,8 @@ pre {
 .col-lg-12 {
     position: relative;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
 }
 
 .col-xs-1,
@@ -1164,6 +1173,7 @@ pre {
     .col-md-10,
     .col-md-11 {
         float: left;
+        margin-top: 60px;
     }
 
     .col-md-1 {
@@ -1192,6 +1202,7 @@ pre {
 
     .col-md-7 {
         width: 58.333333333333336%;
+        margin-top: 60px;
     }
 
     .col-md-8 {
@@ -5123,6 +5134,23 @@ a.list-group-item.active > .badge,
     margin-left: 3px;
 }
 
+/* Custom */
+
+.svg-container {
+
+    padding-bottom: 0;
+}
+
+.results-row {
+
+    margin-top: 200px;
+
+}
+
+
+/*****************/
+
+
 .jumbotron {
     padding: 30px;
     margin-bottom: 30px;
@@ -5142,7 +5170,8 @@ a.list-group-item.active > .badge,
 
 .jumbotron p {
     line-height: 1.4;
-    font-size: 14px;
+    font-size: 18px;
+    padding: 0 7em;
 }
 
 .container .jumbotron {
