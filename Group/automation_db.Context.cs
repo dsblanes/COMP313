@@ -28,10 +28,38 @@ namespace Group
         }
     
         public virtual DbSet<jobsWithDescription> jobsWithDescriptions { get; set; }
+        public virtual DbSet<relatedOccupation> relatedOccupations { get; set; }
     
         public virtual ObjectResult<string> sp_jobstable()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_jobstable");
+        }
+    
+        public virtual ObjectResult<string> occDescription(string term)
+        {
+            var termParameter = term != null ?
+                new ObjectParameter("term", term) :
+                new ObjectParameter("term", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("occDescription", termParameter);
+        }
+    
+        public virtual ObjectResult<string> occProbability(string term)
+        {
+            var termParameter = term != null ?
+                new ObjectParameter("term", term) :
+                new ObjectParameter("term", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("occProbability", termParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_Related(string term)
+        {
+            var termParameter = term != null ?
+                new ObjectParameter("term", term) :
+                new ObjectParameter("term", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Related", termParameter);
         }
     }
 }

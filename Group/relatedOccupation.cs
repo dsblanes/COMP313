@@ -12,12 +12,11 @@ namespace Group
     using System;
     using System.Collections.Generic;
     
-    public partial class jobsWithDescription
+    public partial class relatedOccupation
     {
-        public int Rank { get; set; }
-        public string Code { get; set; }
-        public double Probability { get; set; }
         public string Occupation { get; set; }
-        public string Description { get; set; }
+        public string RelatedOccupation1 { get; set; }
+        public string RelatedCode { get; set; }
+        public int ID { get; set; }
     }
 }

@@ -1,4 +1,10 @@
-﻿@{
+﻿@using Group.Models;
+@using System.Data.Entity;
+
+@model Group.Models.Occupation
+
+
+@{
     ViewBag.Title = "Result";
 }
 
@@ -7,11 +13,11 @@
     <div class="main wrapper clearfix row">
         <div class="col-md-7 results-left">
 
-            <span class="result">25%</span>
+            <span class="result"> @Html.DisplayFor(model => model.occProbability)%</span>
 
-            <h2>Profession X is X% Likely to Be Automated!</h2>
+            <h2>The @Html.DisplayFor(model => model.occName) profession is @Html.DisplayFor(model => model.occProbability)% Likely to Be Automated!</h2>
 
-            <p>Studies have shown that profession is % likely to be automated compared to an average of 53.55% across US industries.</p>
+            <p>Studies have shown that the @Html.DisplayFor(model => model.occName) profession is @Html.DisplayFor(model => model.occProbability) % likely to be automated compared to an average of 53.55% across US industries.</p>
             <div class="professionChart">
                 <div class="professionBar"><span class="professionPerc">x</span>%</div> <div class="avgBar">
                     <span class="professionPerc">x</span>% avg.
@@ -20,13 +26,14 @@
 
             <h2>Related Occupations</h2>
             <ul>
-                <li>Occupation One</li>
-                <li>Occupation Two </li>
-                <li>Occupation Three</li>
+                @foreach(var jr in ViewBag.jobsRelatedTable)
+                {
+                    <li>@jr</li>
+                }
             </ul>
 
             <h2>Job Description</h2>
-            <p>A description of the occupation goes here.  A description of the occupation goes here. A description of the occupation goes here. </p>
+            <p>@Html.DisplayFor(model => model.occName) Description: @Html.DisplayFor(model => model.occDescription)</p>
         </div>
 
 

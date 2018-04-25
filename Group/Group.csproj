@@ -174,7 +174,11 @@
     <Compile Include="jobsWithDescription.cs">
       <DependentUpon>automation_db.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Occupation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="relatedOccupation.cs">
+      <DependentUpon>automation_db.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Occupation.mdf" />
@@ -242,9 +246,7 @@
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\Home\Sorry.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
