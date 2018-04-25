@@ -31,8 +31,10 @@
     <div class="main-image">
     </div>
 
+
+    @RenderBody()
+
     <div class="container body-content">
-        @RenderBody()
         <hr />
         <footer>
             <ul class="nav navbar-nav">
@@ -41,7 +43,7 @@
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
 
-<!--            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>   -->
+            <!--            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>   -->
         </footer>
     </div>
 
