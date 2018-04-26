@@ -1,7 +1,14 @@
-﻿
+﻿@using Group.Models;
+@using System.Data.Entity;
+
+@model Group.Models.Occupation
+
 @{
     ViewBag.Title = "Sorry";
 }
+
+@Scripts.Render("~/Scripts/autocomplete.js")
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/2.5.0/fuse.min.js"></script>
 
 <h2>Sorry</h2>
 
@@ -13,9 +20,8 @@
             <h1>Sorry! We could not find that profession.</h1>
             <p>Use the button below to try again or choose a profession from the list. </p>
 
-            <form action="index.html">
-                <input type="submit" value="SEARCH AGAIN" class="btn">
-            </form>
+
+            <input type="submit" value="SEARCH AGAIN" class="btn">
         </div>
 
 
@@ -26,98 +32,32 @@
 
             <div class="try-again">
                 <h2> Try Again</h2>
-                <p>Enter your profession below to find out or use the table below.</p>
+                <p class="lead">Enter your profession below to find out or use the table below.</p>
 
-
-                <input class="secondary-search" id="secondary-search" type="text" placeholder="Type job name here">
-                <form action="result.html">
-
+                @using (Html.BeginForm("Search", "Home"))
+                {
+                    <input class="job-search secondary-search" id="main-search" type="text" placeholder="Type job name here" name="JobQuery" autocomplete="off">
+                    <div id="results" class="flow-text col s12"></div>
                     <input type="submit" value="GO" class="go-btn">
-                </form>
+                }
             </div>
 
 
 
             <div class="tableWrapper">
-                <table class="table">
-                    <tr>
-                        <td><a href="#">Accountants and Auditors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Actors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Actuaries</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Adhesive Bonding Machine Operators and Tenders</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Administrative Law Judges, Adjudicators, and Hearing Officers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Administrative Services Managers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Adult Basic and Secondary Education and Literacy Teachers and Instructors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Advertising and Promotions Managers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Advertising Sales Agents</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aerospace Engineering and Operations Technicians</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aerospace Engineers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agents and Business Managers of Artists, Performers, and Athletes</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural and Food Science Technicians</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural Engineers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural Inspectors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Agricultural Workers, All Other</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Air Traffic Controllers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aircraft Cargo Handling Supervisors</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aircraft Mechanics and Service Technicians</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Aircraft Structure, Surfaces, Rigging, and Systems Assemblers</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> Airfield Operations Specialists</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"> ...</a></td>
-                    </tr>
+                <table class="table" id="t01">
+                    @foreach (var job in ViewBag.jobsInTable)
+                    {
+                        <tr>
+                            <td>
+
+                                <a href="@Url.Action("Result",null, new {OccupationQuery = @job, controller = "Home" })" class="elements">@job</a>
+
+                            </td>
+                        </tr>
+                    }
                 </table>
             </div>
         </div>
-
-
-        <!--
-             <div class="button-wrapper">
-                   <form action="index.html">
-                     <input type="submit" value="SEARCH AGAIN" class="btn">
-                  </form>
-             </div>
-         </div> -->
-
-    </div> <!-- #main -->
-</div> <!-- #main-container -->
+    </div>
+</div>

@@ -18,8 +18,15 @@ namespace Group.Controllers
         }
         
         [HttpPost]
-        public ActionResult AutoComplete(string JobQuery)
+        public ActionResult Search(string JobQuery)
         {
+            AutomationEntities_ j = new AutomationEntities_();
+            var jobs = j.sp_jobstable().ToList();
+
+            if (JobQuery == "" || !jobs.Contains(JobQuery)) 
+            {
+                return RedirectToAction("Sorry");
+            }
             return RedirectToAction("Result","Home",new { OccupationQuery = JobQuery });
         }
 
@@ -33,6 +40,17 @@ namespace Group.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Contact SCPS";
+
+            return View();
+        }
+
+        public ActionResult Sorry()
+        {
+            ViewBag.Message = "Sorry";
+
+            AutomationEntities_ j = new AutomationEntities_();
+            var jobs = j.sp_jobstable().ToList();
+            ViewBag.jobsInTable = jobs;
 
             return View();
         }
@@ -63,11 +81,5 @@ namespace Group.Controllers
 
             return View(occ);
         }
-
-        public ActionResult Sorry()
-        {
-            return View();
-        }
-
     }
 }
