@@ -35,7 +35,7 @@ body {
     padding: -50px;
     margin: 0;
  /*   background: url('https://i.redd.it/x1yue129bntx.jpg'); */
-    height: 400px;
+    height: 500px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -43,6 +43,17 @@ body {
     overflow: hidden;
 }
 
+.profile {
+    padding: 20px;
+    background-color:  #EEEEEE;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #CCC;
+    border-radius: 2px;
+    width: 100%;
+    text-align: center;
+}
 
 
 .logo { /* Top left logo */
@@ -907,5 +918,9 @@ nav a {
         padding: 0;
         margin: 0;
     }
+
+.profile-pic {
+   margin: 0 auto;
+}
 }
   
